@@ -9,7 +9,7 @@ pipeline {
     environment {
         // Définir les variables d'environnement nécessaires
         MAVEN_HOME = tool 'maven-3.9.6' // Assurez-vous que ce nom correspond à la configuration de Maven dans Jenkins
-        PATH = "${env.MAVEN_HOME}/bin:${env.PATH}"
+        PATH = "${env.MAVEN_HOME}\\bin;${env.PATH}"
     }
 
     stages {
@@ -27,14 +27,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Nettoyer le projet et compiler le code source avec Maven
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
                 // Exécuter les tests avec Maven
-                sh 'mvn test'
+                bat 'mvn test'
             }
             post {
                 // Archiver les résultats des tests et publier les rapports
@@ -47,7 +47,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Ajouter les étapes de déploiement si nécessaire
-                // sh 'mvn deploy'
+                // bat 'mvn deploy'
                 echo 'Déploiement effectué'
             }
         }
