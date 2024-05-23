@@ -3,12 +3,12 @@ pipeline {
 
     tools {
         // Utiliser la version de Maven installée sur Jenkins
-        maven 'apache-maven-3.9.6'
+        maven 'maven-3.9.6'
     }
 
     environment {
         // Définir les variables d'environnement nécessaires
-        MAVEN_HOME = tool 'apache-maven-3.9.6'
+        MAVEN_HOME = tool 'maven-3.9.6'
         PATH = "${env.MAVEN_HOME}/bin:${env.PATH}"
     }
 
