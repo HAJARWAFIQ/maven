@@ -1,19 +1,18 @@
+Fatima Aflous
+	
+04:39 (il y a 1 heure)
+	
+À moi
 pipeline {
     agent any
 
     stages {
-        stage('Prepare Environment') {
-            steps {
-                script {
-                    // Clean the workspace safely
-                    deleteDir()
-                }
-            }
-        }
         stage('Checkout') {
             steps {
+                // Clean the directory (Windows)
+                bat "del /s /q *"
                 // Checkout the Git repository
-                git url: 'https://github.com/HAJARWAFIQ/maven.git', branch: 'master'
+                bat "git clone https://github.com/simoks/java-maven.git"
             }
         }
         stage('Build') {
@@ -24,7 +23,7 @@ pipeline {
                     echo "Current directory: ${currentDir}"
                    
                     // Navigate to the directory containing the Maven project
-                    dir('maven') {
+                    dir('java-maven/maven') {
                         // Run Maven commands
                         bat 'mvn clean test package'
                         bat "java -jar target/maven-0.0.1-SNAPSHOT.jar"
