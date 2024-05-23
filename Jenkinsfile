@@ -1,8 +1,3 @@
-Fatima Aflous
-	
-04:39 (il y a 1 heure)
-	
-À moi
 pipeline {
     agent any
 
